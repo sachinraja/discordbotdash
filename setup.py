@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setup(name="discordbot-dash-xCloudzx", 
+setup(name="discordbotdash-xCloudzx", 
 version="0.12",
 author="Sachin Raja",
 author_email="sachinraja2349@gmail.com",
