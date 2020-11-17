@@ -1,1 +1,2 @@
+recursive-include discordbotdash/app/static *
 recursive-include discordbotdash/app/templates *
