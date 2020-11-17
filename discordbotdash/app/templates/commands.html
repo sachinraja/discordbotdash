@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Discord Bot Management</title>
+        <link rel="stylesheet" href="../static/css/main.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        
+        <!-- Highlight Code (HLJS) -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/languages/python.min.js"></script>
+    </head>
+
+    <body>
+        <h1 class="mainHeader">Discord Bot Management</h1>
+
+        <div id="botInfo">
+            <h2>{{ bot.user }}</h2>
+            <p>ID: {{ bot.user.id }}</p>
+            <p>Command Prefix: {{ command_prefix }}</p>
+            <p>Shard Count: {{ bot.shard_count }}</p>
+        </div>
+
+        <div id="commandCode">
+            <h1>Command Code</h1>
+            <pre><code id="commandCodeBlock">Command Code</code></pre>
+        </div>
+
+        <ul id="botCategories">
+            <li>
+                <a href="{{ url_for('commands') }}">Commands</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('shards') }}">Shards</a>
+            </li>
+        </ul>
+
+        <div class="category" id="catCommands">
+            <form id="commandForm" method="POST">
+                <input type="hidden" name="formName" value="commands">
+                {% for cmd in enabled_commands %}
+                    <div class="catArea">
+                        <h2>{{ cmd }}</h2>
+                        <input checked type="checkbox" name={{ cmd }}>
+                        <label for={{ cmd }}>Toggle</label>
+                        <p><strong>Docstring:</strong> {{ cmd._callback.__doc__ }}</p>
+                        <!-- Escape ` to not conflict with argument str -->
+                        {% set code_str = getsource(cmd._callback).replace("`", "\`") %}
+                        <input type="button" onclick="showCode(`{{ code_str }}`);" value="Code">
+                    </div>
+                {% endfor %}
+
+                {% for cmd in disabled_commands %}
+                    <div class="catArea">
+                        <h2>{{ cmd }}</h2>
+                        <input type="checkbox" name={{ cmd }}>
+                        <label for={{ cmd }}>Toggle</label>
+                        <p><strong>Docstring:</strong> {{ cmd._callback.__doc__ }}</p>
+                        {% set code_str = getsource(cmd._callback).replace("`", "\`") %}
+                        <input type="button" onclick="showCode(`{{ code_str }}`);" value="Code">
+                    </div>
+                {% endfor %}
+                <br>
+                <input class="greenButton" type="submit" value="Update"/>
+            </form>
+        </div>
+    </body>
+</html>

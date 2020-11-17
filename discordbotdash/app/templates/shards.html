@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Discord Bot Management</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </head>
+
+    <body>
+        <h1 class="mainHeader">Discord Bot Management</h1>
+
+        <div id="botInfo">
+            <h2>{{ bot.user }}</h2>
+            <p>ID: {{ bot.user.id }}</p>
+            <p>Command Prefix: {{ command_prefix }}</p>
+            <p>Shard Count: {{ bot.shard_count }}</p>
+        </div>
+
+        <ul id="botCategories">
+            <li>
+                <a href="{{ url_for('commands') }}">Commands</a>
+            </li>
+            
+            <li>
+                <a href="{{ url_for('shards') }}">Shards</a>
+            </li>
+        </ul>
+
+        <div class="category" id="catShards" method="POST">
+            {% for shard_id, latency in bot.latencies %}
+                <div class="catArea">
+                    <h2>Shard {{ shard_id }}</h2>
+                    <p>Latency: {{ (latency * 1000)|round(2) }}</p>
+                </div>
+            {% endfor %}
+            
+            <form method="POST">
+                <input type="hidden" name="formName" value="shardsSync">
+                <input class="greenButton" type="submit" value="Sync"/>
+            </form>
+        </div>
+    </body>
+</html>
