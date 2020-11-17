@@ -1,1 +1,1 @@
-include discordbotdash/app/templates *.html
+recursive-include discordbotdash/app/templates *

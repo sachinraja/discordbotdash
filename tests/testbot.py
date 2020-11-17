@@ -1,7 +1,12 @@
 import discord
 from discord.ext import commands
 import discordbotdash.app.dash as dbd
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+TOKEN = os.environ["TOKEN"]
+print(TOKEN)
 bot = commands.AutoShardedBot("b!")
 
 @bot.command()
@@ -38,4 +43,4 @@ async def on_ready():
     print(f"Logged in as {bot.user} | {bot.user.id}")
     dbd.openDash(bot)
 
-bot.run("NzU0Mzg5NjM0NTU3MDE4MjEy.X10CGA.5DNlO3uQScWzZqLVjykOAF529WA")
+bot.run(TOKEN)
