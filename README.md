@@ -1,2 +1,30 @@
-# discordbot-dash
-A Discord bot management package
+# discordbotdash
+A discord.py package for testing Discord bots in your browser and viewing statistics. You can turn commands on and off, see the code for them, and view your shards with their respective latencies. This is still in development and more features will come.
+
+## Installation
+  * PyPi
+    1. Download the latest version of the package from [TestPyPi](https://test.pypi.org/project/discordbotdash-xCloudzx/) (will be moved to PyPi soon). 
+    1. Move (cd) to the discordbotdash directory.
+    2. Run `python setup.py install`.
+
+## Usage - Example
+Once you have installed it, you can easily open up a dashboard in your browser:
+```py
+import discord
+from discord.ext import commands
+import discordbotdash.app.dash as dbd
+
+bot = commands.AutoShardedBot("!")
+
+@bot.event
+async def on_ready():
+    dbd.openDash(bot)
+
+bot.run("token")
+```
+Ensure that you are opening the dashboard before you are running the bot with `bot.run`. Your dashboard will be open on `127.0.0.1:5000` once you have run `openDash`.
+
+## Contributing
+  * Pull Requests for new features are always welcome.
+  * If you have a suggestion or a bug to report, open an issue.
+
