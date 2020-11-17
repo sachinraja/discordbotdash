@@ -10,7 +10,7 @@ Once you have installed it, you can easily open up a dashboard in your browser:
 ```py
 import discord
 from discord.ext import commands
-import discordbotdash.app.dash as dbd
+import discordbotdash.dash as dbd
 
 bot = commands.AutoShardedBot("!")
 

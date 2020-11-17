@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
-import discordbotdash.app.dash as dbd
+import discordbotdash.dash as dbd
+
+# load from env
 from dotenv import load_dotenv
 import os
 

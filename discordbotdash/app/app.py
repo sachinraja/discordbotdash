@@ -8,13 +8,7 @@ all_commands = None
 disabled_commands = []
 command_prefix = None
 
-class Bot():
-    def __init__(self, commands, prefix, shards):
-        self.commands = commands
-        self.command_prefix = prefix
-        self.shards = shards
-
-def openDash(init_bot):
+def startApp(init_bot):
     global bot
     global all_commands
     global command_prefix
