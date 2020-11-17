@@ -3,9 +3,7 @@ A discord.py package for testing Discord bots in your browser and viewing statis
 
 ## Installation
   * PyPi
-    1. Download the latest version of the package from [TestPyPi](https://test.pypi.org/project/discordbotdash-xCloudzx/) (will be moved to PyPi soon). 
-    1. Move (cd) to the discordbotdash directory.
-    2. Run `python setup.py install`.
+    1. Run `pip install discordbotdash` for the latest version.
 
 ## Usage - Example
 Once you have installed it, you can easily open up a dashboard in your browser:
