@@ -19,15 +19,19 @@
 
         <ul id="botCategories">
             <li>
+                <a href="{{ url_for('cogs') }}">Cogs</a>
+            </li>
+
+            <li>
                 <a href="{{ url_for('commands') }}">Commands</a>
             </li>
-            
+
             <li>
                 <a href="{{ url_for('shards') }}">Shards</a>
             </li>
         </ul>
 
-        <div class="category" id="catShards" method="POST">
+        <div class="category" method="POST">
             {% for shard_id, latency in bot.latencies %}
                 <div class="catArea">
                     <h2>Shard {{ shard_id }}</h2>

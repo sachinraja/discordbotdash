@@ -38,6 +38,15 @@ async def evening(ctx):
 
 @bot.event
 async def on_ready():
+    initial_extensions = ["cogs.one", "cogs.two"]
+
+    for extension in initial_extensions:
+        try:
+            bot.load_extension(extension)
+            
+        except:
+            print(f"{extension} failed to load.")
+    
     print(f"Logged in as {bot.user} | {bot.user.id}")
     dbd.openDash(bot)
 

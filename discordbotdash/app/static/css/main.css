@@ -20,16 +20,13 @@ body{
     font-size: 1.2em;
 }
 
-.catArea input, p{
+.catArea p{
     margin-left: 25px;
-}
-
-.catArea input, p{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    word-wrap: break-word;
 }
 
 .catArea input{
-    font-size: 1.2em;
     padding: 5px;
 }
 
@@ -37,6 +34,10 @@ body{
     padding: 10px;
     font-family: Montserrat, Tahoma, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: lightgray;
+}
+
+#botInfo > p{
+    margin-left: 25px;
 }
 
 #botCategories{

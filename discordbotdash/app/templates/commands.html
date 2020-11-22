@@ -29,6 +29,10 @@
 
         <ul id="botCategories">
             <li>
+                <a href="{{ url_for('cogs') }}">Cogs</a>
+            </li>
+
+            <li>
                 <a href="{{ url_for('commands') }}">Commands</a>
             </li>
 
@@ -37,7 +41,7 @@
             </li>
         </ul>
 
-        <div class="category" id="catCommands">
+        <div class="category">
             <form id="commandForm" method="POST">
                 <input type="hidden" name="formName" value="commands">
                 {% for cmd in enabled_commands %}
