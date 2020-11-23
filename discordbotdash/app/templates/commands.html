@@ -46,7 +46,7 @@
                 <input type="hidden" name="formName" value="commands">
                 {% for cmd in enabled_commands %}
                     <div class="catArea">
-                        <h2>{{ cmd }}</h2>
+                        <h2 id={{ cmd }}>{{ cmd }}</h2>
                         <input checked type="checkbox" name={{ cmd }}>
                         <label for={{ cmd }}>Toggle</label>
                         <p><strong>Docstring:</strong> {{ cmd._callback.__doc__ }}</p>
@@ -58,7 +58,7 @@
 
                 {% for cmd in disabled_commands %}
                     <div class="catArea">
-                        <h2>{{ cmd }}</h2>
+                        <h2 id={{ cmd }}>{{ cmd }}</h2>
                         <input type="checkbox" name={{ cmd }}>
                         <label for={{ cmd }}>Toggle</label>
                         <p><strong>Docstring:</strong> {{ cmd._callback.__doc__ }}</p>

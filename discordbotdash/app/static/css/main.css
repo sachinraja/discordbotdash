@@ -15,12 +15,12 @@ body{
     background: linear-gradient( white, gray)
 }
 
-.catArea h2{
+.catArea > h2{
     font-family: Montserrat, Tahoma, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 1.2em;
 }
 
-.catArea p{
+.catArea > p{
     margin-left: 25px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     word-wrap: break-word;
@@ -28,6 +28,21 @@ body{
 
 .catArea input{
     padding: 5px;
+}
+
+.catArea > label{
+    margin-left: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.catArea > ul{
+    list-style-type: none;
+}
+
+.catArea > ul > li{
+    margin-left: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    word-wrap: break-word;
 }
 
 #botInfo{
@@ -89,11 +104,6 @@ body{
     background-color: lightgray;
     border: 3px solid gray;
     display: block;
-}
-
-#commandForm label{
-    margin-left: 5px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .greenButton{

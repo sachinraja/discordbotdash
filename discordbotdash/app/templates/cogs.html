@@ -39,9 +39,11 @@
                         <h2>{{ cog_name }}</h2>
                         <input checked type="checkbox" name={{ cog_name }}>
                         <label for={{ cog_name }}>Toggle</label>
+                        <ul>
                         {% for cmd in cog.__cog_commands__ %}
-                            <p>{{ cmd }}</p>
+                            <li><a href="{{ url_for('commands') }}#{{ cmd }}">{{ cmd }}</a></li>
                         {% endfor %}
+                        </ul>
                     </div>
                 {% endfor %}
 
@@ -50,9 +52,11 @@
                         <h2>{{ cog_name }}</h2>
                         <input type="checkbox" name={{ cog_name }}>
                         <label for={{ cog_name }}>Toggle</label>
+                        <ul>
                         {% for cmd in cog.__cog_commands__ %}
-                            <p>{{ cmd }}</p>
+                            <li><a href="{{ url_for('commands') }}#{{ cmd }}">{{ cmd }}</a></li>
                         {% endfor %}
+                        </ul>
                     </div>
                 {% endfor %}
                 <br>
