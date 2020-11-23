@@ -74,7 +74,7 @@ def cogs():
 
         return redirect(url_for("cogs"))
     
-    return render_template("cogs.html", bot=bot, command_prefix=command_prefix, enabled_cogs=bot.cogs.items(), disabled_cogs=disabled_cogs.items())
+    return render_template("cogs.html", bot=bot, command_prefix=command_prefix, getfile=inspect.getfile, enabled_cogs=bot.cogs.items(), disabled_cogs=disabled_cogs.items())
 
 @app.route("/commands", methods=["GET", "POST"])
 def commands():
