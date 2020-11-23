@@ -12,7 +12,7 @@ body{
     text-align: center;
     font-family: Montserrat, Tahoma, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 1.5em;
-    background: linear-gradient( white, gray)
+    background: #bcbcbc;
 }
 
 .catArea > h2{
@@ -84,25 +84,17 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#commandCode h1{
+#commandCode > h1{
     text-align: center;
     font-weight: 400;
     font-size: 1.2em;
     background-color: lightgray;
 }
 
-#commandCode textarea{
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    background-color: lightgray;
-    border: 3px solid gray;
-}
-
 .category{
     margin-left: 25%;
-    background-color: lightgray;
-    border: 3px solid gray;
+    background-color: #f0f0f0;
+    border: 3px solid lightgray;
     display: block;
 }
 
