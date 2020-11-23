@@ -32,7 +32,7 @@
         </ul>
 
         <div class="category" method="POST">
-            {% for shard_id, latency in bot.latencies %}
+            {% for shard_id, latency in latencies %}
                 <div class="catArea">
                     <h2>Shard {{ shard_id }}</h2>
                     <p>Latency: {{ (latency * 1000)|round(2) }}</p>

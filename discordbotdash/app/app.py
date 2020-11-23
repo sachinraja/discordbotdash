@@ -112,4 +112,11 @@ def shards():
     if request.method == "POST":
         return redirect(url_for("shards"))
     
-    return render_template("shards.html", bot=bot, command_prefix=command_prefix)
+    # get bot latencies if it is sharded, else get the bot's only latency
+    latencies = None
+    if hasattr(bot, "latencies"):
+        latencies = bot.latencies
+    else:
+        latencies = [(0, bot.latency)]
+    
+    return render_template("shards.html", bot=bot, command_prefix=command_prefix, latencies=latencies)
