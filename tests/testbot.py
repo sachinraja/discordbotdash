@@ -1,10 +1,15 @@
 import discord
 from discord.ext import commands
-import discordbotdash.dash as dbd
+
+# add package to path
+import sys
+import os
+sys.path.append(os.path.dirname(sys.path[0]))
+
+import discordbotdash.dash as dbd # pylint: disable=no-name-in-module, import-error
 
 # load from env
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 TOKEN = os.environ["TOKEN"]
