@@ -1,0 +1,20 @@
+.greenButton{
+    background-color: #44c767;
+    border-radius: 28px;
+    border: 1px solid #18ab29;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    padding: 5px 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+}
+.updateButton:hover {
+    background-color: #5cbf2a;
+}
+.updateButton:active {
+    position: relative;
+    top: 1px;
+}

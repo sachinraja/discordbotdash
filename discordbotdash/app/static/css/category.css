@@ -1,0 +1,57 @@
+.catArea > h2{
+    font-family: Montserrat, Tahoma, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.2em;
+}
+
+.catArea > p{
+    margin-left: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    word-wrap: break-word;
+}
+
+.catArea input{
+    padding: 5px;
+}
+
+.catArea > label{
+    margin-left: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.catArea > ul{
+    list-style-type: none;
+}
+
+.catArea > ul > li{
+    margin-left: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    word-wrap: break-word;
+}
+
+#botCategories{
+    margin-top: 25px;
+    margin-left: 25%;
+    text-align: left;
+    list-style-type: none;
+    background-color: lightgray;
+    font-size: 1.2em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#botCategories > li{
+    display: inline;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#botCategories > li > a{
+    text-decoration: none;
+    color: black;
+}
+
+.category{
+    margin-left: 25%;
+    background-color: #f0f0f0;
+    border: 3px solid lightgray;
+    display: block;
+}

@@ -1,0 +1,14 @@
+#commandCode{
+    margin-top: 25px;
+    float: left; 
+    width: 24%; 
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#commandCode > h1{
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.2em;
+    background-color: lightgray;
+}

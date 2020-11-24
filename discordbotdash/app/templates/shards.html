@@ -3,7 +3,9 @@
     <head>
         <title>Discord Bot Management</title>
 
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bot.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/category.css') }}">
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     </head>
 
@@ -28,6 +30,10 @@
 
             <li>
                 <a href="{{ url_for('shards') }}">Shards</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('console') }}">Console</a>
             </li>
         </ul>
 
