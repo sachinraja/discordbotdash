@@ -7,12 +7,32 @@ import logging
 log = logging.getLogger("werkzeug")
 log.setLevel(logging.ERROR)
 
+# add timestamp to console messages
+import datetime
+
 app = Flask(__name__)
 bot = None
 command_prefix = None
 
 disabled_cogs = {}
 disabled_commands = []
+
+# console-related variables
+console_help_text = \
+"help - Display list of commands (this message).\n\
+cls - Clear console text.\n\
+eval [expression] - Run eval() on expression and display output.\n"
+
+# begin with list of commands
+console_text = ""
+
+def console_log(message):
+    global console_text
+    # format timestamp add add to each console message
+    timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    # add timestamp at beginning and line break at end
+    console_text += f"[{timestamp}] {message}\n"
 
 def startApp(init_bot):
     
@@ -28,12 +48,15 @@ def startApp(init_bot):
     if inspect.isfunction(bot.command_prefix):
         command_prefix = f"<Function> {bot.command_prefix.__name__}"
 
+    # add help to console at start
+    console_log(console_help_text)
+
     # start on separate thread so it does not block bot
     threading.Thread(target=app.run).start()
 
 @app.route("/")
 def render_static():
-    return redirect("/commands")
+    return redirect(url_for("commands"))
 
 @app.route("/cogs", methods=["GET", "POST"])
 def cogs():
@@ -52,6 +75,7 @@ def cogs():
                 # remove cog and add to disabled
                 disabled_cogs[cog_name] = cog
                 bot.remove_cog(cog_name)
+                console_log(f"Disabled cog {cog_name}")
                 print(f"Disabled cog {cog_name}")
         
         # enable cog
@@ -66,12 +90,14 @@ def cogs():
                     if cmd.name in [command.name for command in bot.commands]:
                         bot.remove_command(cmd.name)
                 
-                # search for extension and add if ticked on
-                # add extension back and remove from disabled
+                # search for cog and add if ticked on
+                # add cog back and remove from disabled
                 bot.add_cog(disabled_cogs[cog]) 
                 del disabled_cogs[cog]
+                console_log(f"Enabled cog {cog}")
                 print(f"Enabled cog {cog}")
 
+        # clear form
         return redirect(url_for("cogs"))
     
     return render_template("cogs.html", bot=bot, command_prefix=command_prefix, getfile=inspect.getfile, enabled_cogs=bot.cogs.items(), disabled_cogs=disabled_cogs.items())
@@ -90,6 +116,7 @@ def commands():
                     # remove command and add to disabled
                     bot.remove_command(cmd.name)
                     disabled_commands.append(cmd)
+                    console_log(f"Disabled command {cmd.name}")
                     print(f"Disabled command {cmd.name}")
             
             # enable command
@@ -100,9 +127,10 @@ def commands():
                         # add command back and remove from disabled
                         bot.add_command(disabled_cmd)
                         disabled_commands.remove(disabled_cmd)
+                        console_log(f"Enabled command {cmd}")
                         print(f"Enabled command {cmd}")
         
-        # clear form
+        
         return redirect(url_for("commands"))
     
     return render_template("commands.html", getsource=inspect.getsource, bot=bot, command_prefix=command_prefix, enabled_commands=bot.commands, disabled_commands=disabled_commands)
@@ -120,3 +148,42 @@ def shards():
         latencies = [(0, bot.latency)]
     
     return render_template("shards.html", bot=bot, command_prefix=command_prefix, latencies=latencies)
+
+@app.route("/console", methods=["GET", "POST"])
+def console():
+    if request.method == "POST":
+        if request.form["formName"] == "execute":
+            # get text from input box and log it to the console
+            text = request.form["txtExecute"].strip()
+            text_list = text.split()
+            command = text_list[0]
+            
+            # get arguments if possible
+            if len(text_list) > 1:
+                arguments = text_list[1:]
+            
+            if command == "help":
+                console_log(console_help_text)
+
+            # clear console of text
+            elif command == "cls":
+                global console_text
+                console_text = ""
+            
+            elif command == "eval":
+                # +1 to not include space after command
+                rest_of_text = text[len(command)+1:]
+
+                try:
+                    output = eval(rest_of_text)
+                except Exception as e:
+                    output = e
+                
+                console_log(f"Evaluated {rest_of_text}: {output}")
+            
+            else:
+                console_log(f"{command} is not a command.")
+        
+        return redirect(url_for("console"))
+    
+    return render_template("console.html", bot=bot, command_prefix=command_prefix, console_text=console_text)
