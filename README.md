@@ -1,6 +1,9 @@
 # discordbotdash
 A discord.py package for testing Discord bots in your browser and viewing statistics. You can turn commands on and off, see the code for them, and view your shards with their respective latencies. This is still in development and more features will come.
 
+## Changelog
+  * Added console to view events and eval() with your bot.
+
 ## Screenshots
 ### Cogs
 <img src="../assets/assets/cogs.png" width="300" height="200">

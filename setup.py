@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name="discordbotdash", 
-version="1.2",
+version="1.2.2",
 author="Sachin Raja",
 author_email="sachinraja2349@gmail.com",
 license="MIT",
