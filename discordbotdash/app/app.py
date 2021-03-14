@@ -34,7 +34,7 @@ def console_log(message):
     # add timestamp at beginning and line break at end
     console_text += f"[{timestamp}] {message}\n"
 
-def startApp(init_bot):
+def startApp(init_bot, port=5000):
     
     global bot
     global command_prefix
@@ -52,7 +52,7 @@ def startApp(init_bot):
     console_log(console_help_text)
 
     # start on separate thread so it does not block bot
-    threading.Thread(target=app.run).start()
+    threading.Thread(target=app.run, kwargs={ 'port': port }).start()
 
 @app.route("/")
 def render_static():

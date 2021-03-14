@@ -17,12 +17,14 @@ bot = commands.AutoShardedBot("!")
 @bot.event
 async def on_ready():
     dbd.openDash(bot)
+    # optional port: dbd.openDash(bot, port=5000)
 
 bot.run("token")
 ```
-Ensure that you are opening the dashboard before you are running the bot with `bot.run`. Your dashboard will be open on `127.0.0.1:5000` once you have run `openDash`.
+Ensure that you are opening the dashboard before you are running the bot with `bot.run`. Your dashboard will be open on `127.0.0.1:5000`, or a different port if you have specified one, once you have run `openDash`.
 
 ## Changelog
+  * You can now specify a port or leave it unspecified to default to 5000.
   * Added console to view events and eval() with your bot.
 
 ## Screenshots
